@@ -2,23 +2,42 @@ package TradingPlatform;
 
 import java.util.Scanner;
 
+import session.SessionController;
+
+import account.AccountController;
+
 /**
- * Stock Exchange
+ * Trading Platform
  *
  */
-public class StockExchange 
-{
+public class TradingPlatform {
+	AccountController accountController;
+	SessionController sessionController;
+	
+	
     public static void main( String[] args )
     {
-        StockExchange stockEx = new StockExchange();
-        stockEx.displayMenu();
+    	TradingPlatform tp = new TradingPlatform();
+    	tp.start();
         
         System.exit(0);
     }
     
+    public void start(){
+    	SessionController sc = new SessionController();
+        boolean userVerified = sc.login();
+     
+    	if(userVerified){
+    		displayMenu();  		
+    		}
+    	}
+    
+    
+   
+    
     public void displayMenu(){
-    	int menuItem= 0;
     	Scanner scanner = new Scanner(System.in);
+    	int menuItem= 0;
     	
     	while (menuItem!=6){	//while loop to make menu appear after each method is run
 			try{
@@ -57,4 +76,6 @@ public class StockExchange
 		 	}
 		}
     }
+    
+   
 }
